@@ -1,0 +1,337 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <!-- IE Standards Mode -->
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"></meta>
+
+  <!-- Favicon -->
+  <link href="../../images/vl_blue.ico" type="image/x-icon" rel="icon"></link>
+  <link href="../../images/vl_blue.ico" type="image/x-icon" rel="shortcut icon"></link>
+
+  <!-- Page title -->
+  <title>VLFeat - Documentation > vl_demo_aib</title>
+
+  <!-- Stylesheets -->
+  <link href="../../vlfeat.css" type="text/css" rel="stylesheet"></link>
+  <link href="../../pygmentize.css" type="text/css" rel="stylesheet"></link>
+  <style xml:space="preserve">
+    /* fixes a conflict between Pygmentize and MathJax */
+    .MathJax .mo, .MathJax .mi {color: inherit ! important}
+  </style>
+  
+
+  <!-- Scripts-->
+  
+
+  <!-- MathJax -->
+  <script xml:space="preserve" type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+      processEscapes: true,
+    },
+    TeX: {
+      Macros: {
+        balpha: '\\boldsymbol{\\alpha}',
+        bc: '\\mathbf{c}',
+        be: '\\mathbf{e}',
+        bg: '\\mathbf{g}',
+        bq: '\\mathbf{q}',
+        bu: '\\mathbf{u}',
+        bv: '\\mathbf{v}',
+        bw: '\\mathbf{w}',
+        bx: '\\mathbf{x}',
+        by: '\\mathbf{y}',
+        bz: '\\mathbf{z}',
+        bsigma: '\\mathbf{\\sigma}',
+        sign: '\\operatorname{sign}',
+        diag: '\\operatorname{diag}',
+        real: '\\mathbb{R}',
+      },
+      equationNumbers: { autoNumber: 'AMS' }
+      }
+    });
+  </script>
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" xml:space="preserve" type="text/javascript"></script>
+
+  <!-- Google Custom Search -->
+  <script xml:space="preserve">
+    (function() {
+    var cx = '003215582122030917471:oq23albfeam';
+    var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true;
+    gcse.src = (document.location.protocol == 'https' ? 'https:' : 'http:') +
+    '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
+    })();
+  </script>
+
+  <!-- Google Analytics -->
+  <script xml:space="preserve" type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-4936091-2']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+ </head>
+
+ <!-- Body Start -->
+ <body>
+  <div id="header-section">
+    <div id="header">
+      <!-- Google CSE Search Box -->
+      <div class="searchbox">
+        <gcse:searchbox-only autoCompleteMaxCompletions="5" autoCompleteMatchType="any" resultsUrl="http://www.vlfeat.org/search.html"></gcse:searchbox-only>
+      </div>
+      <h1 id="id-16"><a shape="rect" href="../../index.html" class="plain"><span id="vlfeat">VLFeat</span><span id="dotorg">.org</span></a></h1>
+    </div>
+    <div id="sidebar"> <!-- Navigation Start -->
+      <ul>
+<li><a href="../../index.html">Home</a>
+<ul>
+<li><a href="../../about.html">About</a>
+</li>
+<li><a href="../../license.html">License</a>
+</li>
+</ul></li>
+<li><a href="../../download.html">Download</a>
+<ul>
+<li><a href="../../install-matlab.html">Using from MATLAB</a>
+</li>
+<li><a href="../../install-octave.html">Using from Octave</a>
+</li>
+<li><a href="../../install-shell.html">Using from the command line</a>
+</li>
+<li><a href="../../install-c.html">Using from C</a>
+<ul>
+<li><a href="../../xcode.html">Xcode</a>
+</li>
+<li><a href="../../vsexpress.html">Visual C++</a>
+</li>
+<li><a href="../../gcc.html">g++</a>
+</li>
+</ul></li>
+<li><a href="../../compiling.html">Compiling</a>
+<ul>
+<li><a href="../../compiling-unix.html">Compiling on UNIX-like platforms</a>
+</li>
+<li><a href="../../compiling-windows.html">Compiling on Windows</a>
+</li>
+</ul></li>
+</ul></li>
+<li><a href="../../overview/tut.html">Tutorials</a>
+<ul>
+<li><a href="../../overview/frame.html">Local feature frames</a>
+</li>
+<li><a href="../../overview/covdet.html">Covariant feature detectors</a>
+</li>
+<li><a href="../../overview/hog.html">HOG features</a>
+</li>
+<li><a href="../../overview/sift.html">SIFT detector and descriptor</a>
+</li>
+<li><a href="../../overview/dsift.html">Dense SIFT</a>
+</li>
+<li><a href="../../overview/liop.html">LIOP local descriptor</a>
+</li>
+<li><a href="../../overview/mser.html">MSER feature detector</a>
+</li>
+<li><a href="../../overview/imdisttf.html">Distance transform</a>
+</li>
+<li><a href="../../overview/encodings.html">Fisher Vector and VLAD</a>
+</li>
+<li><a href="../../overview/gmm.html">Gaussian Mixture Models</a>
+</li>
+<li><a href="../../overview/kmeans.html">K-means clustering</a>
+</li>
+<li><a href="../../overview/aib.html">Agglomerative Infromation Bottleneck</a>
+</li>
+<li><a href="../../overview/quickshift.html">Quick shift superpixels</a>
+</li>
+<li><a href="../../overview/slic.html">SLIC superpixels</a>
+</li>
+<li><a href="../../overview/svm.html#tut.svm">Support Vector Machines (SVMs)</a>
+</li>
+<li><a href="../../overview/kdtree.html">KD-trees and forests</a>
+</li>
+<li><a href="../../overview/plots-rank.html">Plotting AP and ROC curves</a>
+</li>
+<li><a href="../../overview/utils.html">Miscellaneous utilities</a>
+</li>
+<li><a href="../../overview/ikm.html">Integer K-means</a>
+</li>
+<li><a href="../../overview/hikm.html">Hierarchical integer k-means</a>
+</li>
+</ul></li>
+<li><a href="../../applications/apps.html">Applications</a>
+</li>
+<li class='active'><a href="../../doc.html">Documentation</a>
+<ul>
+<li><a href="../matlab.html">MATLAB API</a>
+</li>
+<li><a href="../../api/index.html">C API</a>
+</li>
+<li><a href="../../man/man.html">Man pages</a>
+<ul>
+<li><a href="../../man/mser.html">mser</a>
+</li>
+<li><a href="../../man/sift.html">sift</a>
+</li>
+<li><a href="../../man/vlfeat.html">vlfeat</a>
+</li>
+</ul></li>
+</ul></li>
+</ul>
+
+    </div> <!-- sidebar -->
+  </div>
+  <div id="headbanner-section">
+    <div id="headbanner">
+      <span class='page'><a href="../../doc.html">Documentation</a></span><span class='separator'>></span><span class='page'><a href="vl_demo_aib.html">vl_demo_aib</a></span>
+    </div>
+  </div>
+  <div id="content-section">
+    <div id="content-wrapper">
+      <div id="content">
+        
+<h1 id="id-5881">Source code for <code/>vl_demo_aib.m</code></h1><p>This file is located in the <code/>toolbox/demo</code> folder in VLFeat package.</p>
+<pre>
+function vl_demo_aib
+% VL_DEMO_AIB  Test Agglomerative Information Bottleneck (AIB)
+
+D   = 4 ;
+K   = 20 ;
+
+randn('state',0) ;
+rand('state',0) ;
+
+X1 = randn(2,300) ; X1(1,:) = X1(1,:) + 2 ;
+X2 = randn(2,300) ; X2(1,:) = X2(1,:) - 2 ;
+X3 = randn(2,300) ; X3(2,:) = X3(2,:) + 2 ;
+
+figure(1) ; clf ; hold on ;
+vl_plotframe(X1,'color','r') ;
+vl_plotframe(X2,'color','g') ;
+vl_plotframe(X3,'color','b') ;
+axis equal ;
+xlim([-4 4]);
+ylim([-4 4]);
+axis off ;
+rectangle('position',D*[-1 -1 2 2])
+
+vl_demo_print('aib_basic_data', .6) ;
+
+C   = 1:K*K ;
+Pcx = zeros(3,K*K) ;
+
+f1 = quantize(X1,D,K) ;
+f2 = quantize(X2,D,K) ;
+f3 = quantize(X3,D,K) ;
+
+Pcx(1,:) = vl_binsum(Pcx(1,:), ones(size(f1)), f1) ;
+Pcx(2,:) = vl_binsum(Pcx(2,:), ones(size(f2)), f2) ;
+Pcx(3,:) = vl_binsum(Pcx(3,:), ones(size(f3)), f3) ;
+
+Pcx = Pcx / sum(Pcx(:)) ;
+
+[parents, cost] = vl_aib(Pcx) ;
+
+cutsize = [K*K, 10, 3, 2, 1] ;
+for i=1:length(cutsize)
+
+  [cut,map,short] = vl_aibcut(parents, cutsize(i)) ;
+  parents_cut(short > 0) = parents(short(short > 0)) ;
+  C = short(1:K*K+1) ; [drop1,drop2,C] = unique(C) ;
+
+  figure(i+1) ; clf ;
+  plotquantization(D,K,C) ; hold on ;
+  %plottree(D,K,parents_cut) ;
+  axis equal ;
+  axis off ;
+  title(sprintf('%d clusters', cutsize(i))) ;
+
+  vl_demo_print(sprintf('aib_basic_clust_%d',i),.6) ;
+end
+
+% --------------------------------------------------------------------
+function f = quantize(X,D,K)
+% --------------------------------------------------------------------
+d = 2*D / K ;
+j = round((X(1,:) + D) / d) ;
+i = round((X(2,:) + D) / d) ;
+j = max(min(j,K),1) ;
+i = max(min(i,K),1) ;
+f = sub2ind([K K],i,j) ;
+
+% --------------------------------------------------------------------
+function [i,j] = plotquantization(D,K,C)
+% --------------------------------------------------------------------
+hold on ;
+cl = [[.3 .3 .3] ; .5*hsv(max(C)-1)+.5] ;
+d  = 2*D / K ;
+for i=0:K-1
+  for j=0:K-1
+    patch(d*(j+[0 1 1 0])-D, ...
+          d*(i+[0 0 1 1])-D, ...
+          cl(C(j*K+i+1),:)) ;
+  end
+end
+% --------------------------------------------------------------------
+function h = plottree(D,K,parents)
+% --------------------------------------------------------------------
+
+d  = 2*D / K ;
+C = zeros(2,2*K*K-1)+NaN ;
+N = zeros(1,2*K*K-1) ;
+
+for i=0:K-1
+  for j=0:K-1
+    C(:,j*K+i+1) = [d*j-D; d*i-D]+d/2 ;
+    N(:,j*K+i+1) = 1 ;
+  end
+end
+
+for i=1:length(parents)
+  p = parents(i) ;
+  if p==0, continue ; end;
+  if all(isnan(C(:,i))), continue; end
+  if all(isnan(C(:,p)))
+    C(:,p) = C(:,i) / N(i) ;
+  else
+    C(:,p) = C(:,p) + C(:,i) / N(i) ;
+  end
+  N(p) = N(p) + 1 ;
+end
+
+C(1,:) = C(1,:) ./ N ;
+C(2,:) = C(2,:) ./ N ;
+
+xt = zeros(3, 2*length(parents)-1)+NaN ;
+yt = zeros(3, 2*length(parents)-1)+NaN ;
+
+for i=1:length(parents)
+  p = parents(i) ;
+  if p==0, continue ; end;
+  xt(1,i) = C(1,i) ; xt(2,i) = C(1,p) ;
+  yt(1,i) = C(2,i) ; yt(2,i) = C(2,p) ;
+end
+
+h=line(xt(:),yt(:),'linestyle','-','marker','.','linewidth',3) ;
+
+</pre>
+
+      </div>
+      <div class="clear">&nbsp;</div>
+    </div>
+  </div> <!-- content-section -->
+  <div id="footer-section">
+    <div id="footer">
+      &copy; 2007-14,18 The VLFeat Authors
+    </div> <!-- footer -->
+  </div> <!-- footer section -->
+ </body>
+ <!-- Body ends -->
+</html>
+ 

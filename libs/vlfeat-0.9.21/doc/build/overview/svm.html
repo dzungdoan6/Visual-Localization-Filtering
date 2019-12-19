@@ -1,0 +1,402 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <!-- IE Standards Mode -->
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"></meta>
+
+  <!-- Favicon -->
+  <link href="../images/vl_blue.ico" type="image/x-icon" rel="icon"></link>
+  <link href="../images/vl_blue.ico" type="image/x-icon" rel="shortcut icon"></link>
+
+  <!-- Page title -->
+  <title>VLFeat - Tutorials > Support Vector Machines (SVMs)</title>
+
+  <!-- Stylesheets -->
+  <link href="../vlfeat.css" type="text/css" rel="stylesheet"></link>
+  <link href="../pygmentize.css" type="text/css" rel="stylesheet"></link>
+  <style xml:space="preserve">
+    /* fixes a conflict between Pygmentize and MathJax */
+    .MathJax .mo, .MathJax .mi {color: inherit ! important}
+  </style>
+  
+
+  <!-- Scripts-->
+  
+
+  <!-- MathJax -->
+  <script xml:space="preserve" type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+      processEscapes: true,
+    },
+    TeX: {
+      Macros: {
+        balpha: '\\boldsymbol{\\alpha}',
+        bc: '\\mathbf{c}',
+        be: '\\mathbf{e}',
+        bg: '\\mathbf{g}',
+        bq: '\\mathbf{q}',
+        bu: '\\mathbf{u}',
+        bv: '\\mathbf{v}',
+        bw: '\\mathbf{w}',
+        bx: '\\mathbf{x}',
+        by: '\\mathbf{y}',
+        bz: '\\mathbf{z}',
+        bsigma: '\\mathbf{\\sigma}',
+        sign: '\\operatorname{sign}',
+        diag: '\\operatorname{diag}',
+        real: '\\mathbb{R}',
+      },
+      equationNumbers: { autoNumber: 'AMS' }
+      }
+    });
+  </script>
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" xml:space="preserve" type="text/javascript"></script>
+
+  <!-- Google Custom Search -->
+  <script xml:space="preserve">
+    (function() {
+    var cx = '003215582122030917471:oq23albfeam';
+    var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true;
+    gcse.src = (document.location.protocol == 'https' ? 'https:' : 'http:') +
+    '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
+    })();
+  </script>
+
+  <!-- Google Analytics -->
+  <script xml:space="preserve" type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-4936091-2']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+ </head>
+
+ <!-- Body Start -->
+ <body>
+  <div id="header-section">
+    <div id="header">
+      <!-- Google CSE Search Box -->
+      <div class="searchbox">
+        <gcse:searchbox-only autoCompleteMaxCompletions="5" autoCompleteMatchType="any" resultsUrl="http://www.vlfeat.org/search.html"></gcse:searchbox-only>
+      </div>
+      <h1 id="id-16"><a shape="rect" href="../index.html" class="plain"><span id="vlfeat">VLFeat</span><span id="dotorg">.org</span></a></h1>
+    </div>
+    <div id="sidebar"> <!-- Navigation Start -->
+      <ul>
+<li><a href="../index.html">Home</a>
+<ul>
+<li><a href="../about.html">About</a>
+</li>
+<li><a href="../license.html">License</a>
+</li>
+</ul></li>
+<li><a href="../download.html">Download</a>
+<ul>
+<li><a href="../install-matlab.html">Using from MATLAB</a>
+</li>
+<li><a href="../install-octave.html">Using from Octave</a>
+</li>
+<li><a href="../install-shell.html">Using from the command line</a>
+</li>
+<li><a href="../install-c.html">Using from C</a>
+<ul>
+<li><a href="../xcode.html">Xcode</a>
+</li>
+<li><a href="../vsexpress.html">Visual C++</a>
+</li>
+<li><a href="../gcc.html">g++</a>
+</li>
+</ul></li>
+<li><a href="../compiling.html">Compiling</a>
+<ul>
+<li><a href="../compiling-unix.html">Compiling on UNIX-like platforms</a>
+</li>
+<li><a href="../compiling-windows.html">Compiling on Windows</a>
+</li>
+</ul></li>
+</ul></li>
+<li class='active'><a href="tut.html">Tutorials</a>
+<ul>
+<li><a href="frame.html">Local feature frames</a>
+</li>
+<li><a href="covdet.html">Covariant feature detectors</a>
+</li>
+<li><a href="hog.html">HOG features</a>
+</li>
+<li><a href="sift.html">SIFT detector and descriptor</a>
+</li>
+<li><a href="dsift.html">Dense SIFT</a>
+</li>
+<li><a href="liop.html">LIOP local descriptor</a>
+</li>
+<li><a href="mser.html">MSER feature detector</a>
+</li>
+<li><a href="imdisttf.html">Distance transform</a>
+</li>
+<li><a href="encodings.html">Fisher Vector and VLAD</a>
+</li>
+<li><a href="gmm.html">Gaussian Mixture Models</a>
+</li>
+<li><a href="kmeans.html">K-means clustering</a>
+</li>
+<li><a href="aib.html">Agglomerative Infromation Bottleneck</a>
+</li>
+<li><a href="quickshift.html">Quick shift superpixels</a>
+</li>
+<li><a href="slic.html">SLIC superpixels</a>
+</li>
+<li class='active' class='activeLeaf'><a href="svm.html#tut.svm">Support Vector Machines (SVMs)</a>
+</li>
+<li><a href="kdtree.html">KD-trees and forests</a>
+</li>
+<li><a href="plots-rank.html">Plotting AP and ROC curves</a>
+</li>
+<li><a href="utils.html">Miscellaneous utilities</a>
+</li>
+<li><a href="ikm.html">Integer K-means</a>
+</li>
+<li><a href="hikm.html">Hierarchical integer k-means</a>
+</li>
+</ul></li>
+<li><a href="../applications/apps.html">Applications</a>
+</li>
+<li><a href="../doc.html">Documentation</a>
+<ul>
+<li><a href="../matlab/matlab.html">MATLAB API</a>
+</li>
+<li><a href="../api/index.html">C API</a>
+</li>
+<li><a href="../man/man.html">Man pages</a>
+</li>
+</ul></li>
+</ul>
+
+    </div> <!-- sidebar -->
+  </div>
+  <div id="headbanner-section">
+    <div id="headbanner">
+      <span class='page'><a href="tut.html">Tutorials</a></span><span class='separator'>></span><span class='page'><a href="svm.html#tut.svm">Support Vector Machines (SVMs)</a></span>
+    </div>
+  </div>
+  <div id="content-section">
+    <div id="content-wrapper">
+      <div id="content">
+        
+    
+
+<div class='toc'>
+<h3>Table of Contents</h3><ul><li class="level1"><a href="#tut.svm">Support vector machine</a></li>
+<li class="level1"><a href="#tut.svm.diagn">Diagnostics</a></li>
+<li class="level1"><a href="#tut.svm.references">References</a></li>
+</ul>
+</div><!-- Table of contents -->
+
+
+<p><b>VLFeat</b> includes fast SVM solvers,
+SGC <a shape="rect" href="#ref1">[1]</a> and (S)DCA <a shape="rect" href="#ref2">[2]</a>, both
+implemented in <code/>vl_svmtrain</code>.  The function also implements
+features, like Homogeneous kernel map expansion and SVM online
+statistics. (S)DCA can also be used with different loss functions.</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<h1 id="tut.svm">Support vector machine</h1>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<p>A simple example on how to use <code/>vl_svmtrain</code> is
+presented below. Let's first load and plot the training data:</p>
+
+<pre>
+% Load training data X and their labels y
+vl_setup demo % to load the demo data
+load('vl_demo_svm_data.mat');
+
+Xp = X(:,y==1);
+Xn = X(:,y==-1);
+
+figure
+plot(Xn(1,:),Xn(2,:),'*r')
+hold on
+plot(Xp(1,:),Xp(2,:),'*b')
+axis equal ;
+</pre>
+<p>Now we have a plot of the tutorial training data:</p>
+<div class="figure">
+ <img src="../demo/svm_training.jpg"></img>
+ <div class="caption">
+  <span class="content">
+   Training Data.
+  </span>
+ </div>
+</div>
+
+<p>Now we will set the learning parameters:</p>
+
+<pre>
+lambda = 0.01 ; % Regularization parameter
+maxIter = 1000 ; % Maximum number of iterations
+</pre>
+
+
+
+<p>Learning a linear classifier can be easily done with the following 1
+line of code:</p>
+
+<pre>
+
+[w b info] = vl_svmtrain(X, y, lambda, 'MaxNumIterations', maxIter)
+
+</pre>
+
+<p>Now we can plot the output model over the training
+data.</p>
+
+<pre>
+% Visualisation
+eq = [num2str(w(1)) '*x+' num2str(w(2)) '*y+' num2str(b)];
+line = ezplot(eq, [-0.9 0.9 -0.9 0.9]);
+set(line, 'Color', [0 0.8 0],'linewidth', 2);
+</pre>
+
+<p>The result is plotted in the following figure. </p>
+
+<div class="figure">
+ <img src="../demo/svm_training_result.jpg"></img>
+ <div class="caption">
+  <span class="content">
+   Learned model.
+  </span>
+ </div>
+</div>
+
+<p> The output <code/>info</code> is a struct containing some
+  statistic on the learned SVM: </p>
+
+<pre>
+
+info =
+
+            solver: 'sdca'
+            lambda: 0.0100
+    biasMultiplier: 1
+              bias: 0.0657
+         objective: 0.2105
+       regularizer: 0.0726
+              loss: 0.1379
+     dualObjective: 0.2016
+          dualLoss: 0.2742
+        dualityGap: 0.0088
+         iteration: 525
+             epoch: 3
+       elapsedTime: 0.0300
+
+</pre>
+
+<p>It is also possible to use under some
+  assumptions <a shape="rect" href="#ref3">[3]</a> a homogeneous kernel map expanded online inside the
+  solver. This can be done with the following commands:  </p>
+
+<pre>
+% create a structure with kernel map parameters
+hom.kernel = 'KChi2';
+hom.order = 2;
+% create the dataset structure
+dataset = vl_svmdataset(X, 'homkermap', hom);
+% learn the SVM with online kernel map expansion using the dataset structure
+[w b info] = vl_svmtrain(dataset, y, lambda, 'MaxNumIterations', maxIter)
+</pre>
+
+<p>The above code creates a training set without applying any
+  homogeneous kernel map to the data. When the solver is called it will expand each data point with a Chi Squared kernel
+  of period 2.</p>
+
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<h1 id="tut.svm.diagn">Diagnostics</h1>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<p>VLFeat allows to get statistics during the training process. It is
+  sufficient to pass a function handle to the solver. The function
+  will be then called every <code/>DiagnosticFrequency</code> time.</p>
+
+<p>(S)DCA diagnostics also provides the duality gap value (the difference between primal and dual energy),
+  which is the upper bound of the primal task sub-optimality.</p>
+
+<pre>
+% Diagnostic function
+function diagnostics(svm)
+  energy = [energy [svm.objective ; svm.dualObjective ; svm.dualityGap ] ] ;
+end
+
+% Training the SVM
+energy = [] ;
+[w b info] = vl_svmtrain(X, y, lambda,...
+                           'MaxNumIterations',maxIter,...
+                           'DiagnosticFunction',@diagnostics,...
+                           'DiagnosticFrequency',1)
+</pre>
+
+<p>The objective values for the past iterations are kept in the
+  matrix <code/>energy</code>. Now we can plot the objective values from the learning process. </p>
+
+<pre>
+
+figure
+hold on
+plot(energy(1,:),'--b') ;
+plot(energy(2,:),'-.g') ;
+plot(energy(3,:),'r') ;
+legend('Primal objective','Dual objective','Duality gap')
+xlabel('Diagnostics iteration')
+ylabel('Energy')
+
+</pre>
+
+<div class="figure">
+ <img src="../demo/svm_energy.jpg"></img>
+ <div class="caption">
+  <span class="content">
+   SVM objective values plot.
+  </span>
+ </div>
+</div>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+<h1 id="tut.svm.references">References</h1>
+<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+<ul>
+
+<li id="ref1">[1] Y. Singer and N. Srebro. <em>Pegasos: Primal
+  estimated sub-gradient solver for SVM</em>. In Proc. ICML,
+  2007.
+</li>
+
+<li id="ref2">[2] S. Shalev-Schwartz and T. Zhang. <em>Stochastic Dual Coordinate Ascent Methods for Regularized Loss Minimization</em>. 2013.
+</li>
+
+<li id="ref3">[3] A. Vedaldi and A. Zisserman. <em>Efficient additive
+    kernels via explicit feature maps</em>. In PAMI, 2011.
+</li>
+
+</ul>
+
+
+  
+      </div>
+      <div class="clear">&nbsp;</div>
+    </div>
+  </div> <!-- content-section -->
+  <div id="footer-section">
+    <div id="footer">
+      &copy; 2007-14,18 The VLFeat Authors
+    </div> <!-- footer -->
+  </div> <!-- footer section -->
+ </body>
+ <!-- Body ends -->
+</html>
+ 

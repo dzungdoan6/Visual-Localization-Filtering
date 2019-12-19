@@ -1,0 +1,440 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+   <html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <!-- IE Standards Mode -->
+  <meta content="IE=edge" http-equiv="X-UA-Compatible"></meta>
+
+  <!-- Favicon -->
+  <link href="../../images/vl_blue.ico" type="image/x-icon" rel="icon"></link>
+  <link href="../../images/vl_blue.ico" type="image/x-icon" rel="shortcut icon"></link>
+
+  <!-- Page title -->
+  <title>VLFeat - Documentation > vl_demo_kdtree_sift</title>
+
+  <!-- Stylesheets -->
+  <link href="../../vlfeat.css" type="text/css" rel="stylesheet"></link>
+  <link href="../../pygmentize.css" type="text/css" rel="stylesheet"></link>
+  <style xml:space="preserve">
+    /* fixes a conflict between Pygmentize and MathJax */
+    .MathJax .mo, .MathJax .mi {color: inherit ! important}
+  </style>
+  
+
+  <!-- Scripts-->
+  
+
+  <!-- MathJax -->
+  <script xml:space="preserve" type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ['\\(','\\)'] ],
+      processEscapes: true,
+    },
+    TeX: {
+      Macros: {
+        balpha: '\\boldsymbol{\\alpha}',
+        bc: '\\mathbf{c}',
+        be: '\\mathbf{e}',
+        bg: '\\mathbf{g}',
+        bq: '\\mathbf{q}',
+        bu: '\\mathbf{u}',
+        bv: '\\mathbf{v}',
+        bw: '\\mathbf{w}',
+        bx: '\\mathbf{x}',
+        by: '\\mathbf{y}',
+        bz: '\\mathbf{z}',
+        bsigma: '\\mathbf{\\sigma}',
+        sign: '\\operatorname{sign}',
+        diag: '\\operatorname{diag}',
+        real: '\\mathbb{R}',
+      },
+      equationNumbers: { autoNumber: 'AMS' }
+      }
+    });
+  </script>
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" xml:space="preserve" type="text/javascript"></script>
+
+  <!-- Google Custom Search -->
+  <script xml:space="preserve">
+    (function() {
+    var cx = '003215582122030917471:oq23albfeam';
+    var gcse = document.createElement('script'); gcse.type = 'text/javascript'; gcse.async = true;
+    gcse.src = (document.location.protocol == 'https' ? 'https:' : 'http:') +
+    '//www.google.com/cse/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(gcse, s);
+    })();
+  </script>
+
+  <!-- Google Analytics -->
+  <script xml:space="preserve" type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-4936091-2']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+ </head>
+
+ <!-- Body Start -->
+ <body>
+  <div id="header-section">
+    <div id="header">
+      <!-- Google CSE Search Box -->
+      <div class="searchbox">
+        <gcse:searchbox-only autoCompleteMaxCompletions="5" autoCompleteMatchType="any" resultsUrl="http://www.vlfeat.org/search.html"></gcse:searchbox-only>
+      </div>
+      <h1 id="id-16"><a shape="rect" href="../../index.html" class="plain"><span id="vlfeat">VLFeat</span><span id="dotorg">.org</span></a></h1>
+    </div>
+    <div id="sidebar"> <!-- Navigation Start -->
+      <ul>
+<li><a href="../../index.html">Home</a>
+<ul>
+<li><a href="../../about.html">About</a>
+</li>
+<li><a href="../../license.html">License</a>
+</li>
+</ul></li>
+<li><a href="../../download.html">Download</a>
+<ul>
+<li><a href="../../install-matlab.html">Using from MATLAB</a>
+</li>
+<li><a href="../../install-octave.html">Using from Octave</a>
+</li>
+<li><a href="../../install-shell.html">Using from the command line</a>
+</li>
+<li><a href="../../install-c.html">Using from C</a>
+<ul>
+<li><a href="../../xcode.html">Xcode</a>
+</li>
+<li><a href="../../vsexpress.html">Visual C++</a>
+</li>
+<li><a href="../../gcc.html">g++</a>
+</li>
+</ul></li>
+<li><a href="../../compiling.html">Compiling</a>
+<ul>
+<li><a href="../../compiling-unix.html">Compiling on UNIX-like platforms</a>
+</li>
+<li><a href="../../compiling-windows.html">Compiling on Windows</a>
+</li>
+</ul></li>
+</ul></li>
+<li><a href="../../overview/tut.html">Tutorials</a>
+<ul>
+<li><a href="../../overview/frame.html">Local feature frames</a>
+</li>
+<li><a href="../../overview/covdet.html">Covariant feature detectors</a>
+</li>
+<li><a href="../../overview/hog.html">HOG features</a>
+</li>
+<li><a href="../../overview/sift.html">SIFT detector and descriptor</a>
+</li>
+<li><a href="../../overview/dsift.html">Dense SIFT</a>
+</li>
+<li><a href="../../overview/liop.html">LIOP local descriptor</a>
+</li>
+<li><a href="../../overview/mser.html">MSER feature detector</a>
+</li>
+<li><a href="../../overview/imdisttf.html">Distance transform</a>
+</li>
+<li><a href="../../overview/encodings.html">Fisher Vector and VLAD</a>
+</li>
+<li><a href="../../overview/gmm.html">Gaussian Mixture Models</a>
+</li>
+<li><a href="../../overview/kmeans.html">K-means clustering</a>
+</li>
+<li><a href="../../overview/aib.html">Agglomerative Infromation Bottleneck</a>
+</li>
+<li><a href="../../overview/quickshift.html">Quick shift superpixels</a>
+</li>
+<li><a href="../../overview/slic.html">SLIC superpixels</a>
+</li>
+<li><a href="../../overview/svm.html#tut.svm">Support Vector Machines (SVMs)</a>
+</li>
+<li><a href="../../overview/kdtree.html">KD-trees and forests</a>
+</li>
+<li><a href="../../overview/plots-rank.html">Plotting AP and ROC curves</a>
+</li>
+<li><a href="../../overview/utils.html">Miscellaneous utilities</a>
+</li>
+<li><a href="../../overview/ikm.html">Integer K-means</a>
+</li>
+<li><a href="../../overview/hikm.html">Hierarchical integer k-means</a>
+</li>
+</ul></li>
+<li><a href="../../applications/apps.html">Applications</a>
+</li>
+<li class='active'><a href="../../doc.html">Documentation</a>
+<ul>
+<li><a href="../matlab.html">MATLAB API</a>
+</li>
+<li><a href="../../api/index.html">C API</a>
+</li>
+<li><a href="../../man/man.html">Man pages</a>
+<ul>
+<li><a href="../../man/mser.html">mser</a>
+</li>
+<li><a href="../../man/sift.html">sift</a>
+</li>
+<li><a href="../../man/vlfeat.html">vlfeat</a>
+</li>
+</ul></li>
+</ul></li>
+</ul>
+
+    </div> <!-- sidebar -->
+  </div>
+  <div id="headbanner-section">
+    <div id="headbanner">
+      <span class='page'><a href="../../doc.html">Documentation</a></span><span class='separator'>></span><span class='page'><a href="vl_demo_kdtree_sift.html">vl_demo_kdtree_sift</a></span>
+    </div>
+  </div>
+  <div id="content-section">
+    <div id="content-wrapper">
+      <div id="content">
+        
+<h1 id="id-5971">Source code for <code/>vl_demo_kdtree_sift.m</code></h1><p>This file is located in the <code/>toolbox/demo</code> folder in VLFeat package.</p>
+<pre>
+function vl_demo_kdtree_sift
+% VL_DEMO_KDTREE_SIFT
+%   Demonstrates the use of a kd-tree forest to match SIFT
+%   features. If FLANN is present, this function runs a comparison
+%   against it.
+
+% AUTORIGHS
+
+rand('state',0) ;
+randn('state',0);
+
+do_median = 0 ;
+do_mean = 1 ;
+
+% try to setup flann
+if ~exist('flann_search', 'file')
+  if exist(fullfile(vl_root, 'opt', 'flann', 'build', 'matlab'))
+    addpath(fullfile(vl_root, 'opt', 'flann', 'build', 'matlab')) ;
+  end
+end
+do_flann = exist('nearest_neighbors') == 3 ;
+if ~do_flann
+  warning('FLANN not found. Comparison disabled.') ;
+end
+
+maxNumComparisonsRange = [1 10 50 100 200 300 400] ;
+numTreesRange = [1 2 5 10] ;
+
+% get data (SIFT features)
+im1 = imread(fullfile(vl_root, 'data', 'roofs1.jpg')) ;
+im2 = imread(fullfile(vl_root, 'data', 'roofs2.jpg')) ;
+im1 = single(rgb2gray(im1)) ;
+im2 = single(rgb2gray(im2)) ;
+[f1,d1] = vl_sift(im1,'firstoctave',-1,'floatdescriptors','verbose') ;
+[f2,d2] = vl_sift(im2,'firstoctave',-1,'floatdescriptors','verbose') ;
+
+% add some noise to make matches unique
+d1 = single(d1) + rand(size(d1)) ;
+d2 = single(d2) + rand(size(d2)) ;
+
+% match exhaustively to get the ground truth
+elapsedDirect = tic ;
+D = vl_alldist(d1,d2) ;
+[drop, best] = min(D, [], 1) ;
+elapsedDirect = toc(elapsedDirect) ;
+
+for ti=1:length(numTreesRange)
+  for vi=1:length(maxNumComparisonsRange)
+    v = maxNumComparisonsRange(vi) ;
+    t = numTreesRange(ti) ;
+
+    if do_median
+      tic ;
+      kdtree = vl_kdtreebuild(d1, ...
+                              'verbose', ...
+                              'thresholdmethod', 'median', ...
+                              'numtrees', t) ;
+      [i, d] = vl_kdtreequery(kdtree, d1, d2, ...
+                              'verbose', ...
+                              'maxcomparisons',v) ;
+      elapsedKD_median(vi,ti) = toc ;
+      errors_median(vi,ti) = sum(double(i) ~= best) / length(best) ;
+      errorsD_median(vi,ti) = mean(abs(d - drop) ./ drop) ;
+    end
+
+    if do_mean
+      tic ;
+      kdtree = vl_kdtreebuild(d1, ...
+                              'verbose', ...
+                              'thresholdmethod', 'mean', ...
+                              'numtrees', t) ;
+      %kdtree = readflann(kdtree, '/tmp/flann.txt') ;
+      %checkx(kdtree, d1, 1, 1) ;
+      [i, d] = vl_kdtreequery(kdtree, d1, d2, ...
+                              'verbose', ...
+                              'maxcomparisons', v) ;
+      elapsedKD_mean(vi,ti) = toc ;
+      errors_mean(vi,ti) = sum(double(i) ~= best) / length(best) ;
+      errorsD_mean(vi,ti) = mean(abs(d - drop) ./ drop) ;
+    end
+
+    if do_flann
+      tic ;
+      [i, d] = flann_search(d1, d2, 1, struct('algorithm','kdtree', ...
+                                              'trees', t, ...
+                                              'checks', v));
+      ifla = i ;
+      elapsedKD_flann(vi,ti) = toc;
+      errors_flann(vi,ti) = sum(i ~= best) / length(best) ;
+      errorsD_flann(vi,ti) = mean(abs(d - drop) ./ drop) ;
+    end
+  end
+end
+
+figure(1) ; clf ;
+leg = {} ;
+hnd = [] ;
+sty = {{'color','r'},{'color','g'},...
+       {'color','b'},{'color','c'},...
+       {'color','k'}} ;
+
+for ti=1:length(numTreesRange)
+  s = sty{mod(ti,length(sty))+1} ;
+
+  if do_median
+    h1=loglog(elapsedDirect ./ elapsedKD_median(:,ti),100*errors_median(:,ti),'-*',s{:}) ;  hold on ;
+    leg{end+1} = sprintf('VLFeat median (%d tr.)', numTreesRange(ti)) ;
+    hnd(end+1) = h1 ;
+  end
+
+  if do_mean
+    h2=loglog(elapsedDirect ./ elapsedKD_mean(:,ti), 100*errors_mean(:,ti), '-o',s{:}) ;  hold on ;
+    leg{end+1} = sprintf('VLFeat (%d tr.)', numTreesRange(ti)) ;
+    hnd(end+1) = h2 ;
+  end
+
+  if do_flann
+    h3=loglog(elapsedDirect ./ elapsedKD_flann(:,ti), 100*errors_flann(:,ti), '+--',s{:}) ;  hold on ;
+    leg{end+1} = sprintf('FLANN (%d tr.)', numTreesRange(ti)) ;
+    hnd(end+1) = h3 ;
+  end
+end
+set([hnd], 'linewidth', 2) ;
+xlabel('speedup over linear search (log times)') ;
+ylabel('percentage of incorrect matches (%)') ;
+h=legend(hnd, leg{:}, 'location', 'southeast') ;
+set(h,'fontsize',8) ;
+grid on ;
+axis square ;
+vl_demo_print('kdtree_sift_incorrect',.6) ;
+
+figure(2) ; clf ;
+leg = {} ;
+hnd = [] ;
+for ti=1:length(numTreesRange)
+  s = sty{mod(ti,length(sty))+1} ;
+
+  if do_median
+    h1=loglog(elapsedDirect ./ elapsedKD_median(:,ti),100*errorsD_median(:,ti),'*-',s{:}) ; hold on ;
+    leg{end+1} = sprintf('VLFeat median (%d tr.)', numTreesRange(ti)) ;
+    hnd(end+1) = h1 ;
+  end
+
+  if do_mean
+    h2=loglog(elapsedDirect ./ elapsedKD_mean(:,ti), 100*errorsD_mean(:,ti), 'o-',s{:}) ; hold on ;
+    leg{end+1} = sprintf('VLFeat (%d tr.)', numTreesRange(ti)) ;
+    hnd(end+1) = h2 ;
+  end
+
+  if do_flann
+    h3=loglog(elapsedDirect ./ elapsedKD_flann(:,ti), 100*errorsD_flann(:,ti), '+--',s{:}) ; hold on ;
+    leg{end+1} = sprintf('FLANN (%d tr.)', numTreesRange(ti)) ;
+    hnd(end+1) = h3 ;
+  end
+end
+set([hnd], 'linewidth', 2) ;
+xlabel('speedup over linear search (log times)') ;
+ylabel('relative overestimation of minmium distannce (%)') ;
+h=legend(hnd, leg{:}, 'location', 'southeast') ;
+set(h,'fontsize',8) ;
+grid on ;
+axis square ;
+vl_demo_print('kdtree_sift_distortion',.6) ;
+
+% --------------------------------------------------------------------
+function checkx(kdtree, X, t, n, mib, mab)
+% --------------------------------------------------------------------
+
+if nargin <= 4
+  mib = -inf * ones(size(X,1),1) ;
+  mab = +inf * ones(size(X,1),1) ;
+end
+
+lc = kdtree.trees(t).nodes.lowerChild(n) ;
+uc = kdtree.trees(t).nodes.upperChild(n) ;
+
+if lc < 0
+  for i=-lc:-uc-1
+    di = kdtree.trees(t).dataIndex(i) ;
+    if any(X(:,di) > mab)
+      error('a') ;
+    end
+    if any(X(:,di) < mib)
+      error('b') ;
+    end
+  end
+  return
+end
+
+i = kdtree.trees(t).nodes.splitDimension(n) ;
+v = kdtree.trees(t).nodes.splitThreshold(n) ;
+
+mab_ = mab ;
+mab_(i) = min(mab(i), v) ;
+checkx(kdtree, X, t, lc, mib, mab_) ;
+
+mib_ = mib ;
+mib_(i) = max(mib(i), v) ;
+checkx(kdtree, X, t, uc, mib_, mab) ;
+
+% --------------------------------------------------------------------
+function kdtree = readflann(kdtree, path)
+% --------------------------------------------------------------------
+
+data = textread(path)' ;
+
+for i=1:size(data,2)
+  nodeIds = data(1,:) ;
+  ni = find(nodeIds == data(1,i)) ;
+  if ~isnan(data(2,i))
+    % internal node
+    li = find(nodeIds == data(4,i)) ;
+    ri = find(nodeIds == data(5,i)) ;
+    kdtree.trees(1).nodes.lowerChild(ni) = int32(li) ;
+    kdtree.trees(1).nodes.upperChild(ni) = int32(ri) ;
+    kdtree.trees(1).nodes.splitThreshold(ni) = single(data(2,i)) ;
+    kdtree.trees(1).nodes.splitDimension(ni) = single(data(3,i)+1) ;
+  else
+    di = data(3,i) + 1 ;
+    kdtree.trees(1).nodes.lowerChild(ni) = int32(- di) ;
+    kdtree.trees(1).nodes.upperChild(ni) = int32(- di - 1) ;
+  end
+  kdtree.trees(1).dataIndex = uint32(1:kdtree.numData) ;
+end
+
+</pre>
+
+      </div>
+      <div class="clear">&nbsp;</div>
+    </div>
+  </div> <!-- content-section -->
+  <div id="footer-section">
+    <div id="footer">
+      &copy; 2007-14,18 The VLFeat Authors
+    </div> <!-- footer -->
+  </div> <!-- footer section -->
+ </body>
+ <!-- Body ends -->
+</html>
+ 
