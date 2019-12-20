@@ -17,7 +17,7 @@ We included, compiled and tested all 3rh party libraries on MATLAB R2018a, Ubunt
 Dataset
 ============
 
-+ Please download dataset.zip and workdir.zip from ..........., and unzip them in the source code's directory
++ Please download dataset.zip and workdir.zip from [here](https://drive.google.com/open?id=1TNvcd6RWPydm6Z2dTvZ90FHZ2uZevwt1), and unzip them in the source code's directory
 + Projection and whitening matrices are adapted from DenseVLAD paper of Torii et al. (http://www.ok.ctrl.titech.ac.jp/~torii/project/247/)
 
 Currently, we only publish the code to test Oxford RobotCar dataset with alternate route.
