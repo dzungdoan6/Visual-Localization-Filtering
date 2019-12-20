@@ -1,8 +1,10 @@
 About
 ============
-MATLAB code for Monte Carlo-based Visual Localization
+MATLAB code of our DICTA 2019 paper:
 
-If you use/adapt our code, please kindly cite our DICTA 2019 paper: "Visual Localization Under Appearance Change: A Filtering Approach", Anh-Dzung Doan, Yasir Latif, Thanh-Toan Do, Yu Liu, Shin-Fang Ch’ng, Tat-Jun Chin, and Ian Reid
+"Visual Localization Under Appearance Change: A Filtering Approach" - DICTA 2019 **(Best paper award)**, [Anh-Dzung Doan](https://sites.google.com/view/dzungdoan/home), [Yasir Latif](http://ylatif.github.io/), [Thanh-Toan Do](https://sites.google.com/view/thanhtoando/home), [Yu Liu](https://sites.google.com/site/yuliuunilau/home), Shin-Fang Ch’ng, [Tat-Jun Chin](https://cs.adelaide.edu.au/~tjchin/doku.php), and [Ian Reid](https://cs.adelaide.edu.au/~ianr/)
+
+If you use/adapt our code, please kindly cite our paper.
 
 Dependencies
 ============
