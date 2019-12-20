@@ -31,7 +31,7 @@ Run extractFeatures.m to extract features
 If you are lazy, we included precomputed features in the work_dir/ with the name format: <sequence_name>.mat
 
 
-Perform Localization
+Localization
 ============
 
 Run doLocalization.m
