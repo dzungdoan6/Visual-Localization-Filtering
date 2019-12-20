@@ -14,7 +14,7 @@ Dependencies
 + Piotr's Computer Vision Matlab Toolbox (https://pdollar.github.io/toolbox/)
 + Some codes adapted from Akihiko Torii and Relja Arandjelovic (http://www.ok.ctrl.titech.ac.jp/~torii/project/247/)
 
-We included, compiled and tested all 3rh party libraries on MATLAB R2018a, Ubuntu 16.04 LTS 64 bit
+We included, compiled and tested all 3rd-party libraries on MATLAB R2018a, Ubuntu 16.04 LTS 64 bit
 
 Dataset
 ============
