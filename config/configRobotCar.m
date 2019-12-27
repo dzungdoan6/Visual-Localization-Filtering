@@ -14,7 +14,9 @@ function [dataset_dir, work_dir, sequences, sequence_lengths, ...
                 '2014-06-26-09-24-58'}; % sequence name
             sequence_lengths = [3306, 3040, 3164]; % length of sequence
         case 'full'
-            error('full route is coming soon');
+            %error('full route is coming soon');
+            sequences = {'2014-12-09-13-21-02', '2014-11-28-12-07-13', '2014-12-02-15-30-08'};
+            sequence_lengths = [34128, 35348, 34927];
         otherwise
             error('Please provide a valid route for RobotCar');
     end

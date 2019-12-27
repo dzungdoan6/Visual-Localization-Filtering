@@ -1,4 +1,4 @@
-clear;
+clear aclear;
 %% Dependencies
 addpath('libs/yael_matlab_linux64_v438'); % yael
 addpath(genpath('libs/Piotr-toolbox/toolbox-master')); % toolbox from Piotr Dollar
@@ -10,7 +10,7 @@ addpath('pf'); % particle filter codes
 addpath('evaluation'); % evaluation codes
 
 %% Configure dataset for experiment
-route = 'alternate'; % route can be "alternate" or "full"
+route = 'full'; % route can be "alternate" (1km) or "full" (10km)
 [dataset_dir, work_dir, sequences, sequence_lengths] = configRobotCar(route);
 
 knn = 20; % number of nearest neighbors for searching

@@ -19,16 +19,21 @@ We included, compiled and tested all 3rd-party libraries on MATLAB R2018a, Ubunt
 Dataset
 ============
 
-+ Please download dataset.zip and workdir.zip from [here](https://drive.google.com/open?id=1TNvcd6RWPydm6Z2dTvZ90FHZ2uZevwt1), and unzip them in the source code's directory
++ For precomputed features, please download work_dir.zip from [here](https://universityofadelaide.box.com/s/oiyp79si64713qrmt8tsytdwi7zdhxyk)
+and unzip it in the source code's directory.
+
++ Due to a huge file size, we will upload original images soon.
+
 + Projection and whitening matrices are adapted from DenseVLAD paper of Torii et al. (http://www.ok.ctrl.titech.ac.jp/~torii/project/247/)
 
-Currently, we only publish the code to test Oxford RobotCar dataset with alternate route.
-We will publish code for RobotCar's full route and GTA dataset soon
+Currently, we only publish the code to test Oxford RobotCar dataset with alternate (1km) and full (10km) routes.
+We will publish code for GTA dataset soon
 
 Feature Extraction
 ============
 
-Run extractFeatures.m to extract features
+Run extractFeatures.m to extract features. 
+Note that please change the "route" variable to "alternate" (1km) or "full" (10km)
 
 If you are lazy, we included precomputed features in the work_dir/ with the name format: <sequence_name>.mat
 
@@ -36,9 +41,10 @@ If you are lazy, we included precomputed features in the work_dir/ with the name
 Localization
 ============
 
-Run doLocalization.m
+Run doLocalization.m to perform visual localization. 
+Note that please change the "route" variable to "alternate" (1km) or "full" (10km)
 
-For altenate route, it takes around 10 minute to finish. After finishing, it will show mean and median errors, and plot the predicted trajectory same as Figure 8d within the paper
+After finishing, it will show mean/median errors, and plot the predicted trajectory same as Figure 8d and 8g within the paper
 
 Support
 ============

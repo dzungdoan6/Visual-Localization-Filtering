@@ -9,7 +9,7 @@ addpath('utils'); % utility codes
 addpath('config'); % configuration codes
 
 %% Configure dataset for experiment
-route = 'alternate'; % route can be "alternate" or "full"
+route = 'full'; % route can be "alternate" or "full"
 [dataset_dir, work_dir, sequences, sequence_lengths, ...
     sequence_numbers] = configRobotCar(route);
 
@@ -46,7 +46,6 @@ for ii = 1 : sequence_numbers
     info = readInfoFile(info_file, seq_len);
     
     % extract feature
-    
     fprintf('Extract features of sequence %s\n', seq);
     feature_file = [work_dir '/' seq '.mat'];
     fprintf('\tFeatures are stored in %s\n', feature_file);
