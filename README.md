@@ -23,7 +23,7 @@ Dataset
 and unzip it in the source code's directory.
 
 + If you want to extract features from original images, please download original images from [here](https://universityofadelaide.box.com/s/5ns92t1lfn49v2xppkjk12sk1e6oue7w).
-- Unzip `2014-06-26-08-53-56.zip`, `2014-06-26-09-24-58.zip` and `2014-06-23-15-41-25.zip` to `dataset/alternate/`
+	- Unzip `2014-06-26-08-53-56.zip`, `2014-06-26-09-24-58.zip` and `2014-06-23-15-41-25.zip` to `dataset/alternate/`
 
 + Projection and whitening matrices are adapted from DenseVLAD paper of Torii et al. (http://www.ok.ctrl.titech.ac.jp/~torii/project/247/)
 
@@ -34,16 +34,15 @@ Feature Extraction
 ============
 
 Run extractFeatures.m to extract features. 
-Note that please change the "route" variable to "alternate" (1km) or "full" (10km)
 
-If you are lazy, we included precomputed features in the work_dir/ with the name format: <sequence_name>.mat
+Note that please change the `route` variable to `alternate` (1km) or `full` (10km)
 
 
 Localization
 ============
 
 Run doLocalization.m to perform visual localization. 
-Note that please change the "route" variable to "alternate" (1km) or "full" (10km)
+Note that please change the `route` variable to `alternate` (1km) or `full` (10km)
 
 After finishing, it will show mean/median errors, and plot the predicted trajectory same as Figure 8d and 8g within the paper
 
