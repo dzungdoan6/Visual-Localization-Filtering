@@ -26,7 +26,7 @@ and unzip it to the source code's directory.
 
 + If you want to extract features from original images, please download original images from [here](https://universityofadelaide.box.com/s/5ns92t1lfn49v2xppkjk12sk1e6oue7w).
 	- Unzip `2014-06-26-08-53-56.zip`, `2014-06-26-09-24-58.zip`, and `2014-06-23-15-41-25.zip` to `dataset/alternate/`
-	- Unzip `2014-11-28-12-07-13.zip`, `2014-12-02-15-30-08.zip`, and `2014-12-09-13-21-02.zip` to `dataset/full`
+	- Unzip `2014-11-28-12-07-13.zip`, `2014-12-02-15-30-08.zip`, and `2014-12-09-13-21-02.zip` to `dataset/full/`
 
 + Projection and whitening matrices are adapted from DenseVLAD paper of Torii et al. (http://www.ok.ctrl.titech.ac.jp/~torii/project/247/)
 
