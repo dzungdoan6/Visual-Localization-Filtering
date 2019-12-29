@@ -6,7 +6,7 @@ MATLAB code of our DICTA 2019 paper:
 
 If you use/adapt our code, please kindly cite our paper.
 
-![Result on Oxford RobotCar](result.pdf)
+![Result on Oxford RobotCar](result.png)
 
 Dependencies
 ============
