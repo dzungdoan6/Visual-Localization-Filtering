@@ -6,7 +6,9 @@ MATLAB code of our DICTA 2019 paper:
 
 If you use/adapt our code, please kindly cite our paper.
 
-Comparison results on Oxford RobotCar dataset [3] between PoseNet [1], MapNet [2], and our method
+<p align="center">
+<b>Comparison results on Oxford RobotCar dataset [3] between PoseNet [1], MapNet [2], and our method</b><br>
+</p>
 
 ![Result on Oxford RobotCar](result.png)
 
