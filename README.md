@@ -6,8 +6,9 @@ MATLAB code of our DICTA 2019 paper:
 
 If you use/adapt our code, please kindly cite our paper.
 
+Comparison results on Oxford RobotCar dataset [3] between PoseNet [1], MapNet [2], and our method
+
 ![Result on Oxford RobotCar](result.png)
-Figure: Comparison results on Oxford RobotCar dataset [3] between PoseNet [1], MapNet [2], and our method
 
 [1] Alex Kendall, Matthew Grimes, and Roberto Cipolla, "PoseNet: A Convolutional Network for Real-Time 6-DOF Camera Relocalization", in CVPR 2015.
 
