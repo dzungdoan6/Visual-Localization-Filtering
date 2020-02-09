@@ -54,7 +54,7 @@ Note that please change the `route` variable to `alternate` (1km) or `full` (10k
 Localization
 ============
 
-Run `doLocalization.m` to perform visual localization. 
+Run `doMCVL.m` to perform visual localization with MCVL, and `doHMM.m` to perform visual localization with HMM.
 Note that please change the `route` variable to `alternate` (1km) or `full` (10km)
 
 After finishing, it will show mean/median errors, and plot the predicted trajectory same as Figure 8d and 8g within the paper

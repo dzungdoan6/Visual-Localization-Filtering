@@ -1,7 +1,7 @@
-function [db_vec, db_info] = loadData(dataset_dir, work_dir, ...
+function [db_vec, db_info] = loadData_RobotCar(dataset_dir, work_dir, ...
     seq_db, seq_len_db)
-%LOADDATABASE loads feature vectors and information (location and
-%orientation) database
+%LOADDATABASE_ROBOTCAR loads feature vectors and information (location and
+%orientation) database of Oxford RobotCar
     
     db_vec = [];
     db_info = {};

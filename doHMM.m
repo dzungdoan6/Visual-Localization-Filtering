@@ -8,12 +8,14 @@ addpath('utils'); % utility codes
 addpath('config'); % configuration codes
 addpath('pf'); % particle filter codes
 addpath('evaluation'); % evaluation codes
+addpath('hmm'); % hmm codes
 
 %% Configure dataset for experiment
-route = 'alternate'; % route can be "alternate" (1km) or "full" (10km)
-[dataset_dir, work_dir, sequences, sequence_lengths] = configRobotCar(route);
+dataset.name = 'RobotCar';
+dataset.route = 'alternate'; % route can be "alternate" (1km) or "full" (10km)
+[dataset_dir, work_dir, sequences, sequence_lengths] = configRobotCar(dataset.route);
 
-knn = 20; % number of nearest neighbors for searching
+KK = 20; % size of place hypotheses
 
 % split database and query sequences
 seq_db = sequences(2:end);
@@ -24,18 +26,24 @@ seq_len_qr = sequence_lengths(1);
 % release unnecessary variables
 clearvars sequences sequence_lengths
 
-% parameters for localization
-params = configMCVLParamsRobotCar(route);
-params.num_particles = 1000;
-
 %% Load database & query
 fprintf('\nLoad database\n');
-[db_vec, db_info] = loadData_RobotCar([dataset_dir '/' route], work_dir, seq_db, seq_len_db);
+[db_vec, db_info] = loadData_RobotCar([dataset_dir '/' dataset.route], work_dir, seq_db, seq_len_db);
 assert(size(db_vec, 2) == length(db_info));
 
 fprintf('\nLoad query\n');
-[qr_vec, qr_info_gnd] = loadData_RobotCar([dataset_dir '/' route], work_dir, seq_qr, seq_len_qr);
+[qr_vec, qr_info_gnd] = loadData_RobotCar([dataset_dir '/' dataset.route], work_dir, seq_qr, seq_len_qr);
+
 assert(size(qr_vec, 2) == length(qr_info_gnd));
+
+%% Setting parameters
+% parameters for HMM
+params_hmm = configHMMParamsRobotCar(sum(seq_len_db), dataset);
+fprintf('\nMake transition matrix\n');
+tic;
+params_hmm = makeTransitionMatrix(seq_len_db, params_hmm);
+params_hmm.E = params_hmm.E'; 
+fprintf('\tFinished in %.2fs\n', toc);
 
 
 %% Do localization
@@ -48,30 +56,16 @@ for qr_idx = 1 : size(qr_vec, 2)
     
     qr = qr_vec(:,qr_idx);
     
-    % Estimate noisy measurement
-    [ranks, ~] = yael_nn(db_vec, qr, knn);
-    retrieved_info = db_info(ranks);
-    
-    [noisy_loc, noisy_rot] = poseFromPlaceHypotheses(retrieved_info);
-    
+    % Compute belief
     if qr_idx == 1
-        [states, weights] = initParticles(noisy_rot, noisy_loc, params);
+        [ranks, belief] = filterImageIndices(db_vec, qr, KK, params_hmm);
     else
-        % update particle's motions based on dynamic model
-        states = updateMotion(states, params);
-        
-        % update particle's weights
-        weights = updateWeights(states, noisy_loc, noisy_rot, params);
-        
-        % normalize weights
-        weights = weights./sum(weights);
-        
-        % Resample particles based on their weights
-        [states, weights, idx] = resample(states, weights, 'systematic_resampling');
+        [ranks, belief] = filterImageIndices(db_vec, qr, KK, params_hmm, belief);
     end
     
-    % predict camera pose from particles
-    [pred_loc, pred_rot] = predictPose(states, weights);
+    % estimate 6-DoF pose from place hypotheses
+    place_hypotheses_info = db_info(ranks);
+    [pred_loc, pred_rot] = poseFromPlaceHypotheses(place_hypotheses_info);
     
     % store result for evaluation
     result_info{qr_idx}.loc = pred_loc;
@@ -97,3 +91,4 @@ fprintf('\tMean error = %.2f m and %.2f deg\n', mean_errors(1), mean_errors(2));
 
 %% Plot ground truth and predicted trajectories
 plotTrajectory(qr_info_gnd, result_info);
+
