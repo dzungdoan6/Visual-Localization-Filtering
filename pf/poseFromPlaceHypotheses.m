@@ -1,7 +1,7 @@
-function [loc_noisy, rot_noisy] = estimateNoisyMeasurement(info, sequence)
-%ESTIMATENOISYMEASUREMENT estimates noisy measurements from meanshift
-%clustering w.r.t 3D location of retrieved images
-    
+function [loc, rot] = poseFromPlaceHypotheses(info, sequence)
+%POSEFROMPLACEHYPOTHESES estimates 6-DoF poses from meanshift
+%clustering w.r.t 3D location from place hypotheses
+
     if ~exist('sequence', 'var')
         sequence = 'XYZ';
     end
@@ -34,10 +34,10 @@ function [loc_noisy, rot_noisy] = estimateNoisyMeasurement(info, sequence)
     member_loc = ret_loc(member_ids,:);
     member_quat = ret_quat(member_ids,:);
     
-    loc_noisy = mean(member_loc, 1)'; 
+    loc = mean(member_loc, 1)'; 
     
     member_quat = quatnormalize(member_quat);
-    rot_noisy = rotqrmean(member_quat');
-    rot_noisy = quat2eul(rot_noisy', sequence)';
+    rot = rotqrmean(member_quat');
+    rot = quat2eul(rot', sequence)';
 end
 

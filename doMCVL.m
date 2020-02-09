@@ -52,7 +52,7 @@ for qr_idx = 1 : size(qr_vec, 2)
     [ranks, ~] = yael_nn(db_vec, qr, knn);
     retrieved_info = db_info(ranks);
     
-    [noisy_loc, noisy_rot] = estimateNoisyMeasurement(retrieved_info);
+    [noisy_loc, noisy_rot] = poseFromPlaceHypotheses(retrieved_info);
     
     if qr_idx == 1
         [states, weights] = initParticles(noisy_rot, noisy_loc, params);
