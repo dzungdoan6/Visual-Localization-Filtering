@@ -25,7 +25,7 @@ seq_len_qr = sequence_lengths(1);
 clearvars sequences sequence_lengths
 
 % parameters for localization
-params = configParamsRobotCar(route);
+params = configMCVLParamsRobotCar(route);
 params.num_particles = 1000;
 
 %% Load database & query

@@ -1,4 +1,4 @@
-function [params] = configParamsRobotCar(route)
+function [params] = configMCVLParamsRobotCar(route)
 %CONFIGPARAMSROBOTCAR 
 
     % Parameters for initializing particles
