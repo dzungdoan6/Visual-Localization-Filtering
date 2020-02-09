@@ -10,7 +10,7 @@ addpath('pf'); % particle filter codes
 addpath('evaluation'); % evaluation codes
 
 %% Configure dataset for experiment
-route = 'full'; % route can be "alternate" (1km) or "full" (10km)
+route = 'alternate'; % route can be "alternate" (1km) or "full" (10km)
 [dataset_dir, work_dir, sequences, sequence_lengths] = configRobotCar(route);
 
 knn = 20; % number of nearest neighbors for searching
