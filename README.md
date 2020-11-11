@@ -1,8 +1,8 @@
 About
 ============
-MATLAB code of our DICTA 2019 paper:
+MATLAB code of our NCAA 2020 paper:
 
-"Visual Localization Under Appearance Change: A Filtering Approach" - DICTA 2019 **(Best paper award)**. [Anh-Dzung Doan](https://sites.google.com/view/dzungdoan/home), [Yasir Latif](http://ylatif.github.io/), [Thanh-Toan Do](https://sites.google.com/view/thanhtoando/home), [Yu Liu](https://sites.google.com/site/yuliuunilau/home), [Shin-Fang Ch’ng](https://sites.google.com/view/shinfang-chng/), [Tat-Jun Chin](https://cs.adelaide.edu.au/~tjchin/doku.php), and [Ian Reid](https://cs.adelaide.edu.au/~ianr/). [[pdf]](https://arxiv.org/abs/1811.08063)
+"Visual Localization Under Appearance Change: Filtering Approaches" - NCAA 2020. [Anh-Dzung Doan](https://sites.google.com/view/dzungdoan/home), [Yasir Latif](http://ylatif.github.io/), [Thanh-Toan Do](https://sites.google.com/view/thanhtoando/home), [Yu Liu](https://sites.google.com/site/yuliuunilau/home), [Shin-Fang Ch’ng](https://sites.google.com/view/shinfang-chng/), [Tat-Jun Chin](https://cs.adelaide.edu.au/~tjchin/doku.php), and [Ian Reid](https://cs.adelaide.edu.au/~ianr/). [[pdf]](https://arxiv.org/abs/1811.08063)
 
 If you use/adapt our code, please kindly cite our paper.
 
